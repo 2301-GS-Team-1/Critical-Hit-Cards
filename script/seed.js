@@ -35,7 +35,7 @@ const seed = async () => {
 
 const Cards = [
   {
-    firstName: "DeAaron",
+    firstName: "DeAarongelo",
     lastName: "Fox",
     imageUrl: "",
     information: "Cooking the Warriors",
