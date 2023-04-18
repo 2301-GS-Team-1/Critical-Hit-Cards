@@ -42,8 +42,15 @@ const Cards = [
     price: "30000",
     quantity: "1",
   },
+  {
+    firstName: "Mike",
+    lastName: "Trout",
+    imageUrl: "",
+    information: "Center fielder for the Los Angeles Angels",
+    price: "100000",
+    quantity: "1",
+  },
 ];
-
 /*
  We've separated the `seed` function from the `runSeed` function.
  This way we can isolate the error handling and exit trapping.
