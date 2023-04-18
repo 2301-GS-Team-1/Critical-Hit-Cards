@@ -32,6 +32,8 @@ User.prototype.generateToken = function() {
 
 /**
  * classMethods
+ //test comment here
+ * test
  */
 User.authenticate = async function({ username, password }){
     const user = await this.findOne({where: { username }})
