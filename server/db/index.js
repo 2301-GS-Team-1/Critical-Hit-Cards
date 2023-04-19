@@ -12,7 +12,7 @@ User.hasOne(Cart);
 User.hasMany(Order);
 
 Cart.hasMany(Product);
-
+Order.hasOne(Cart);
 Order.hasMany(Product);
 
 module.exports = {
