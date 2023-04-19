@@ -25,6 +25,8 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route to="/home" element={<Home />} />
+          <Route path="/products" element={<Cards />} />
+          <Route path="/products/:id" element={<SingleCard />} />
         </Routes>
       ) : (
         <Routes>
