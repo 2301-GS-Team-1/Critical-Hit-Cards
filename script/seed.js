@@ -37,7 +37,6 @@ const Cards = [
   {
     firstName: "DeAarongelo",
     lastName: "Fox",
-    imageUrl: "",
     information: "Cooking the Warriors",
     price: "30000",
     quantity: "1",
@@ -45,7 +44,6 @@ const Cards = [
   {
     firstName: "Mike",
     lastName: "Trout",
-    imageUrl: "",
     information: "Center fielder for the Los Angeles Angels",
     price: "100000",
     quantity: "1",
