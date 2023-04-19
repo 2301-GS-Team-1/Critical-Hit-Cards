@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchCards, selectCards } from "./slices/allCardsSlice";
 
 const Cards = () => {
   const dispatch = useDispatch();
