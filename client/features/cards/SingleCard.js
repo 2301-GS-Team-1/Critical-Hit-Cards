@@ -9,7 +9,7 @@ const SingleCard = () => {
   const { firstName, lastName, imageUrl, information, price, quantity } = card;
 
   useEffect(() => {
-    dispatch(fetchSingleStudent(id));
+    dispatch(fetchSingleCard(id));
   }, [dispatch]);
 
   return (
