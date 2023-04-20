@@ -17,7 +17,6 @@ const Product = db.define("product", {
   },
   price: {
     type: Sequelize.INTEGER,
-    defaultValue: Math.floor(Math.random() * 1000),
   },
   quantity: {
     type: Sequelize.INTEGER,
@@ -26,6 +25,10 @@ const Product = db.define("product", {
 
 Product.beforeCreate((instance, options) => {
   instance.price = Math.floor(Math.random() * (100 - 5 + 1)) + 5;
+});
+
+Product.beforeCreate((instance, options) => {
+  instance.quantity = Math.floor(Math.random() * 20);
 });
 
 module.exports = Product;
