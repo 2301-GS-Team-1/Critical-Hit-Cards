@@ -7,7 +7,7 @@ const SingleCard = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const card = useSelector(selectSingleCard);
-  const { firstName, lastName, imageUrl, information, price, quantity } = card;
+  const { name, images, flavorText, price, quantity } = card;
 
   useEffect(() => {
     dispatch(fetchSingleCard(id));
@@ -16,11 +16,9 @@ const SingleCard = () => {
   return (
     <div id="single-card">
       <div id="single-card-info">
-        <h1>
-          {firstName} {lastName}
-        </h1>
-        <img src={imageUrl} />
-        <p>{information}</p>
+        {/* <h1>{name}</h1> */}
+        <img src={images?.large} />
+        <p>{flavorText}</p>
         <p>${price}</p>
         <p>In Stock: {quantity}</p>
       </div>
