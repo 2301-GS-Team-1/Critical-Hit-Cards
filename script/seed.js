@@ -4,7 +4,9 @@ const {
   db,
   models: { User },
 } = require("../server/db");
+const Order = require("../server/db/models/Order");
 const Product = require("../server/db/models/Product");
+const Cart = require("../server/db/models/Cart");
 
 /**
  * seed - this function clears the database, updates tables to
@@ -15,20 +17,23 @@ const Product = require("../server/db/models/Product");
 const seed = async () => {
   await db.sync({ force: true }); // clears db and matches models to tables
   console.log("db synced!");
+  await Promise.all(Users.map((user) => User.create(user)));
   await Promise.all(Cards.map((card) => Product.create(card)));
+  await Promise.all(Orders.map((order) => Order.create(order)));
+  await Promise.all(Carts.map((cart) => Cart.create(cart)));
 
   // Creating Users
-  const users = await Promise.all([
-    User.create({ username: "cody", password: "123" }),
-    User.create({ username: "murphy", password: "123" }),
-  ]);
+  // const users = await Promise.all([
+  //   User.create({ username: "cody", password: "123" }),
+  //   User.create({ username: "murphy", password: "123" }),
+  // ]);
 
-  console.log(`seeded ${users.length} users`);
+  console.log(`seeded ${Users.length} users`);
   console.log(`seeded successfully`);
   return {
-    users: {
-      cody: users[0],
-      murphy: users[1],
+    Users: {
+      cody: Users[0],
+      murphy: Users[1],
     },
   };
 };
@@ -37,10 +42,41 @@ const Cards = [
   {
     firstName: "DeAarongelo",
     lastName: "Fox",
-    imageUrl: "",
     information: "Cooking the Warriors",
     price: "30000",
     quantity: "1",
+  },
+  {
+    firstName: "Mike",
+    lastName: "Trout",
+    information: "Center fielder for the Los Angeles Angels",
+    price: "100000",
+    quantity: "1",
+  },
+];
+
+const Users = [
+  {
+    username: "cody",
+    password: "123",
+  },
+  {
+    username: "murphy",
+    password: "123",
+  },
+];
+
+const Orders = [
+  {
+    userId: 1,
+    fulfilled: false,
+  },
+];
+
+const Carts = [
+  {
+    orderId: 1,
+    productId: 1,
   },
 ];
 

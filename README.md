@@ -1,4 +1,4 @@
-# FS-App-Template
+# Critical Hit Cards
 
 ## Setup
 
