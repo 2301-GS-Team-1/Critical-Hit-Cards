@@ -2,11 +2,20 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import React from "react";
 
-const initialState = {};
+const initialState = [];
 
-export const fetchSingleCart = createAsyncThunk("singCart", async (id) => {
+export const fetchSingleCart = createAsyncThunk("singleCart", async (id) => {
   try {
     const { data } = await axios.get(`/api/cart/${id}`);
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+export const addToCart = createAsyncThunk("addToCart", async (id) => {
+  try {
+    const { data } = await axios.post(`/api/cart/${id}`);
     return data;
   } catch (err) {
     console.log(err);
@@ -34,10 +43,15 @@ export const singleCartSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchSingleCart.fulfilled, (state, action) => {
+    builder
+    .addCase(fetchSingleCart.fulfilled, (state, action) => {
       state = action.payload;
       return state;
-    });
+    })
+    .addCase(addToCart.fulfilled, (state, action) => {
+      state.push(action.payload);
+      return state;
+    })
   },
 });
 export const selectSingleCart = (state) => {
@@ -45,6 +59,6 @@ export const selectSingleCart = (state) => {
 };
 
 export const { addCardToCart, removeCardFromCart, clearCardFromCart } =
-  SingleCartSlice.actions;
+  singleCartSlice.actions;
 
-export default singleCart.reducer;
+export default singleCartSlice.reducer;

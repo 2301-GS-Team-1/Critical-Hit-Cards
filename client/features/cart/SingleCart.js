@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleCart, selectSingleCart } from "./slices/singleCartSlice";
+import { fetchSingleCart, selectSingleCart } from "../cards/SingleCartSlice"
+import { addToCart } from "../cards/SingleCartSlice";
 
 const SingleCart = () => {
   const dispatch = useDispatch();
