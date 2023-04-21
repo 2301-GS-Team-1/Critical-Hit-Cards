@@ -1,36 +1,50 @@
 html {
   margin: 0;
+  min-height: 100%;
+  background: rgb(22, 27, 34);
+  background: linear-gradient(
+    0deg,
+    rgba(22, 27, 34, 1) 0%,
+    rgba(14, 27, 69, 1) 50%,
+    rgba(22, 27, 34, 1) 100%
+  );
 }
 
 body {
   font-family: sans-serif;
+  color: #c9d1d9;
   margin: 0;
+}
+
+a {
+  color: #c9d1d9;
 }
 
 #all-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin: 5px 0.29%;
+  margin: 10px;
 }
 
 #card-container {
   /* display: flex; */
   /* justify-content: space-between; */
   /* flex-wrap: wrap; */
+  background-color: #190c47;
   flex: 1 0 auto;
   width: 25vw;
   min-width: 480px;
   padding: 25px 1.75%;
   margin: 5px 0.75%;
-  box-shadow: 0px 0px 10px 0.5px lightgrey;
+  box-shadow: 0px 0px 10px 0.5px black;
   /* border: 1px solid black; */
   border-radius: 25px;
   transition: 200ms ease;
 }
 
 #card-container:hover {
-  box-shadow: 0px 0px 15px 5px darkgrey;
+  box-shadow: 0px 0px 15px 5px black;
   transition: 250ms ease;
   transform: scale(1.02);
   /* transform: rotateZ(10deg); */
@@ -45,7 +59,7 @@ body {
 }
 
 #all-cards-image {
-  box-shadow: 0px 0px 8px 2px darkgrey;
+  box-shadow: 0px 0px 8px 2px black;
   transition: 250ms ease;
   /* justify-content: flex-start; */
   /* margin: 2%; */
