@@ -1,36 +1,35 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleCart, selectSingleCart } from "../cards/SingleCartSlice"
+import { fetchSingleCart, selectSingleCart } from "../cards/SingleCartSlice";
 import { addToCart } from "../cards/SingleCartSlice";
 
 const SingleCart = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const cart = useSelector(selectSingleCart);
-  const { orderId, productId } = cart;
+  // const { productId } = cart;
 
   useEffect(() => {
     dispatch(fetchSingleCart(id));
   }, [dispatch]);
 
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await dispatch(deleteCard(id));
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // };
 
-// const handleDelete = async (id) => {
-//   try {
-//     await dispatch(deleteCard(id));
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-return (
-  <div id="single-cart">
-    <div id="single-cart-info">
-      <p>Order: {orderId}</p>
-      <p>Product: {productId}</p>
+  return (
+    <div id="single-cart">
+      <div id="single-cart-info">
+        {/* <p>Order: {orderId}</p> */}
+        {/* <p>Product: {productId}</p> */}
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
-export default SingleCart
+export default SingleCart;

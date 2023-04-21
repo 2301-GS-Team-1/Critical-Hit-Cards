@@ -4,8 +4,7 @@ import { useDispatch } from "react-redux";
 import { AddCardToCart } from "./slices/AddCardToCart";
 
 const AddCardToCart = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
 
@@ -13,9 +12,8 @@ const AddCardToCart = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    dispatch(addCardToCart({ firstName, lastName, price, quantity }));
-    setFirstName("");
-    setLastName("");
+    dispatch(addCardToCart({ name, price, quantity }));
+    setName("");
     setPrice("");
     setQuantity("");
   };
@@ -27,12 +25,6 @@ const AddCardToCart = () => {
         name="firstName"
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
-      />
-      <label>Last Name: </label>
-      <input
-        name="Last Name"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
       />
       <label> Price: </label>
       <input
