@@ -13,21 +13,28 @@ export const fetchSingleCart = createAsyncThunk("singCart", async (id) => {
   }
 });
 
-export const singleCartSlice = createSlice({
+export const SingleCartSlice = createSlice({
   name: "singleCart",
   initialState,
   reducers: {
     addCardToCart: (state, action) => {
-      const card = state.find((card) => card.id == action.payload.id);
+      const card = state.find((card) => card.id === action.payload.id);
       if (card) {
         card.quantity += 1;
       } else {
-        state.push(action.payload);
+        state.push({ ...action.payload, quantity: 1 });
       }
-      return state;
     },
     removeCardFromCart: (state, action) => {
-      return state.filter((card) => card.id !== action.payload);
+      const cardIndex = state.findIndex((card) => card.id === action.payload.id);
+      if (cardIndex !== -1) {
+        const card = state[cardIndex];
+        if (card.quantity > 1) {
+          card.quantity -= 1;
+        } else {
+          state.splice(cardIndex, 1);
+        }
+      }
     },
     clearCardFromCart: (state) => {
       return [];
@@ -47,4 +54,6 @@ export const selectSingleCart = (state) => {
 export const { addCardToCart, removeCardFromCart, clearCardFromCart } =
   SingleCartSlice.actions;
 
-export default singleCart.reducer;
+export default SingleCartSlice.reducer;
+
+

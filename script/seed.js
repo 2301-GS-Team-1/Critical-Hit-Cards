@@ -3894,3 +3894,39 @@ if (module === require.main) {
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed;
+
+// const PokemonList = ({ cards }) => {
+//   return (
+//     <div>
+//       {cards.map((card) => (
+//         <PokemonCard key={card.number} number={card.number} />
+//       ))}
+//     </div>
+//   );
+// };
+
+// const PokemonCard = ({ number }) => {
+//   const addToCart = () => {
+//     const cartItem = {
+//       orderId: number,
+//       productId: 1, // You can add more information here if needed
+//     };
+//     // Add the cartItem to the cart
+//   };
+
+//   return (
+//     <div>
+//       <h2>{`#${number}`}</h2>
+//       {/* Render the rest of the Pokemon card */}
+//       <button onClick={addToCart}>Add to cart</button>
+//     </div>
+//   );
+// };
+
+// const App = () => {
+//   return (
+//     <div>
+//       <PokemonList cards={pokemonCards} />
+//     </div>
+//   );
+// };

@@ -14,7 +14,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const cart = await Cart.findAll({
-      where: { orderId: req.params.id },
+      where: { number: req.params.id },
     });
     res.json(cart);
   } catch (err) {
