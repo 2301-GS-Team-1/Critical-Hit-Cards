@@ -15,17 +15,17 @@ const Cards = () => {
     <div id="all-cards">
       {cards.map((card) => {
         return (
-          <div id="card-container" key={card.id}>
-            <Link to={`/products/${card.id}`}>
-              <img src={card.images.small} />
+          <Link id="card-container" to={`/products/${card.id}`}>
+            <div key={card.id}>
+              <img id="all-cards-image" src={card.images.small} />
               <div id="card-info">
-                {/* <h3>{card.name}</h3> */}
-                {/* <p>{card.information}</p> */}
+                <h3>{card.name}</h3>
+                <p>{card.information}</p>
                 <p>${card.price}</p>
-                {/* <p>In Stock: {card.quantity}</p> */}
+                <p>In Stock: {card.quantity}</p>
               </div>
-            </Link>
-          </div>
+            </div>
+          </Link>
         );
       })}
     </div>
