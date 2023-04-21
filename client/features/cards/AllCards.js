@@ -15,8 +15,8 @@ const Cards = () => {
     <div id="all-cards">
       {cards.map((card) => {
         return (
-          <Link id="card-container" to={`/products/${card.id}`}>
-            <div key={card.id}>
+          <Link key={card.id} id="card-container" to={`/products/${card.id}`}>
+            <div>
               <img id="all-cards-image" src={card.images.small} />
               <div id="card-info">
                 <h3>{card.name}</h3>
