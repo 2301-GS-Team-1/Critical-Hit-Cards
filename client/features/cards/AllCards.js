@@ -2,10 +2,17 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCards, selectCards } from "./slices/allCardsSlice";
-
+//import { addToCart } from "./SingleCartSlice";
+//import {}
+import { addCardToCart } from "../cart/CartSlice";
 const Cards = () => {
   const dispatch = useDispatch();
   const cards = useSelector(selectCards);
+
+  //handles dispatch to addcardtocart
+  const handleAddToCart = (card) => {
+    dispatch(addCardToCart(card));
+  };
 
   useEffect(() => {
     dispatch(fetchCards());
@@ -15,17 +22,18 @@ const Cards = () => {
     <div id="all-cards">
       {cards.map((card) => {
         return (
-          <Link id="card-container" to={`/products/${card.id}`}>
-            <div key={card.id}>
+          <div key={card.id}>
+            <Link id="card-container" to={`/products/${card.id}`}>
               <img id="all-cards-image" src={card.images.small} />
-              <div id="card-info">
-                <h3>{card.name}</h3>
-                <p>{card.information}</p>
-                <p>${card.price}</p>
-                <p>In Stock: {card.quantity}</p>
-              </div>
+            </Link>
+            <div id="card-info">
+              <h3>{card.name}</h3>
+              <p>{card.information}</p>
+              <p>${card.price}</p>
+              <p>In Stock: {card.quantity}</p>
+              <button onClick={() => handleAddToCart(card)}>Add to Cart</button>
             </div>
-          </Link>
+          </div>
         );
       })}
     </div>
