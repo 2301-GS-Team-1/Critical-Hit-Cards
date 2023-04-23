@@ -3,7 +3,7 @@ const {
   models: { Product, Cart },
 } = require("../db");
 module.exports = router;
-
+const isAdminCheck = require("./gatekeepingMiddleware");
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -54,7 +54,7 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", isAdminCheck, async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id);
     await product.update(req.body);

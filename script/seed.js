@@ -3840,6 +3840,7 @@ const pokemonCards = [
 ];
 
 const Users = [
+  { username: "admin", password: "1234", isAdmin: true },
   {
     username: "cody",
     password: "123",
