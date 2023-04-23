@@ -3,7 +3,8 @@ const {
   models: { Product, Cart },
 } = require("../db");
 module.exports = router;
-const isAdminCheck = require("./gatekeepingMiddleware");
+const { isAdminCheck } = require("./gatekeepingMiddleware");
+
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({
