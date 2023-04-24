@@ -15,6 +15,7 @@ const SingleCard = () => {
     hp,
     evolvesFrom,
     evolvesTo,
+    abilities,
     attacks,
     weaknesses,
     retreatCost,
@@ -57,20 +58,44 @@ const SingleCard = () => {
           {types && types.length > 0
             ? types.map((type, index) => (
                 <div key={index}>
-                  <p>{type}</p>
+                  <p>{type} Type</p>
                 </div>
               ))
             : ""}
         </div>
-        <p>HP {hp}</p>
-        <p>
-          Evolves from <em>{evolvesFrom}</em>
-        </p>
-        <p>
-          Evolves to <em>{evolvesTo}</em>
-        </p>
+        <div>{hp ? <p>HP {hp}</p> : ""}</div>
         <div>
-          ATTACKS{" "}
+          {evolvesFrom ? (
+            <p>
+              Evolves from <em>{evolvesFrom}</em>
+            </p>
+          ) : (
+            ""
+          )}
+        </div>
+        <div>
+          {evolvesTo ? (
+            <p>
+              Evolves to <em>{evolvesTo}</em>
+            </p>
+          ) : (
+            ""
+          )}
+        </div>
+        <div>
+          {abilities && abilities.length > 0 ? <p>ABILITIES</p> : ""}
+          {abilities && abilities.length > 0
+            ? abilities.map((ability, index) => (
+                <div key={index}>
+                  <p>{ability.name}</p>
+
+                  <p>{ability.text}</p>
+                </div>
+              ))
+            : ""}
+        </div>
+        <div>
+          {attacks && attacks.length > 0 ? <p>ATTACKS</p> : ""}
           {attacks && attacks.length > 0
             ? attacks.map((attack, index) => (
                 <div key={index}>
@@ -84,18 +109,74 @@ const SingleCard = () => {
                   <p>{attack.text}</p>
                 </div>
               ))
-            : "None"}
+            : ""}
         </div>
-        {/* <p>WEAKNESSES {weaknesses}</p> */}
-        {/* <p>RETREAT COST{retreatCost}</p> */}
+        <div>
+          {weaknesses && weaknesses.length > 0 ? <p>WEAKNESSES</p> : ""}
+          {weaknesses && weaknesses.length > 0
+            ? weaknesses.map((weakness, index) => (
+                <div key={index}>
+                  <p>
+                    {weakness.type}: {weakness.value}
+                  </p>
+                </div>
+              ))
+            : ""}
+        </div>
+        <div>
+          {retreatCost && retreatCost.length > 0 ? <p>RETREAT COST</p> : ""}
+          {retreatCost && retreatCost.length > 0 ? retreatCost.join(", ") : ""}
+        </div>
         {/* <p>NUMBER {number}</p> */}
-        {/* <p>ARTIST {artist}</p> */}
-        {/* <p>RARITY {rarity}</p> */}
-        {/* <p>Pokédex Entry {nationalPokedexNumbers}</p> */}
-        {/* <p>Legalities {legalities}</p> */}
-        <p>{/* <em>{flavorText}</em> */}</p>
-        {/* <p>${price}</p> */}
-        {/* <p>In Stock: {quantity}</p> */}
+        <div>
+          ARTIST<br></br>
+          {artist}
+        </div>
+        <div>
+          RARITY<br></br>
+          {rarity}
+        </div>
+        <div>
+          {nationalPokedexNumbers && nationalPokedexNumbers.length > 0 ? (
+            <p>Pokedex Entry</p>
+          ) : (
+            ""
+          )}
+          {nationalPokedexNumbers && nationalPokedexNumbers.length > 0 ? (
+            <p>#{nationalPokedexNumbers.join(", ")}</p>
+          ) : (
+            ""
+          )}
+        </div>
+        <div>
+          {legalities && Object.keys(legalities).length > 0 ? (
+            <p>Legalities</p>
+          ) : (
+            ""
+          )}
+          {legalities && Object.keys(legalities).length > 0 ? (
+            <div>
+              {(() => {
+                let legalityList = [];
+                for (let key in legalities) {
+                  legalityList.push(
+                    <p key={key}>
+                      {key}: {legalities[key]}
+                    </p>
+                  );
+                }
+                return legalityList;
+              })()}
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+        <div>
+          <em>{flavorText}</em>
+        </div>
+        <p>${price}</p>
+        <p>In Stock: {quantity}</p>
       </div>
     </div>
   );
