@@ -10,7 +10,8 @@ const SingleCard = () => {
   const {
     name,
     supertype,
-    subtype,
+    subtypes,
+    types,
     hp,
     evolvesFrom,
     evolvesTo,
@@ -39,9 +40,28 @@ const SingleCard = () => {
       <img src={images?.large} />
       <div id="single-card-info">
         <h1>{name}</h1>
-        <p>
-          {supertype} - {subtype}
-        </p>
+        <div>
+          {subtypes && subtypes.length > 0 ? (
+            subtypes.map((type, index) => (
+              <div key={index}>
+                <p>
+                  {supertype} - {type}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>{supertype}</p>
+          )}
+        </div>
+        <div>
+          {types && types.length > 0
+            ? types.map((type, index) => (
+                <div key={index}>
+                  <p>{type}</p>
+                </div>
+              ))
+            : ""}
+        </div>
         <p>HP {hp}</p>
         <p>
           Evolves from <em>{evolvesFrom}</em>
