@@ -7,6 +7,51 @@ const Product = db.define("product", {
     unique: true,
     allowNull: false,
   },
+  supertype: {
+    type: Sequelize.STRING,
+  },
+  subtypes: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+  },
+  hp: {
+    type: Sequelize.STRING,
+  },
+  types: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+  },
+  evolvesFrom: {
+    type: Sequelize.STRING,
+  },
+  evolvesTo: {
+    type: Sequelize.JSON,
+  },
+  abilities: {
+    type: Sequelize.ARRAY(Sequelize.JSON),
+  },
+  attacks: {
+    type: Sequelize.ARRAY(Sequelize.JSON),
+  },
+  weaknesses: {
+    type: Sequelize.ARRAY(Sequelize.JSON),
+  },
+  retreatCost: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+  },
+  number: {
+    type: Sequelize.STRING,
+  },
+  artist: {
+    type: Sequelize.STRING,
+  },
+  rarity: {
+    type: Sequelize.STRING,
+  },
+  nationalPokedexNumbers: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+  },
+  legalities: {
+    type: Sequelize.JSON,
+  },
   images: {
     type: Sequelize.JSON,
     defaultValue:
