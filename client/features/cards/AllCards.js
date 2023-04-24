@@ -2,9 +2,14 @@ import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCards, selectCards } from "./slices/allCardsSlice";
+import CreateProduct from "./CreateProduct";
 
 const Cards = () => {
   const dispatch = useDispatch();
+
+  localStorage.setItem('key', 'value');
+  const data = localStorage.getItem('key');
+  localStorage.removeItem('key');
 
   const cards = useSelector(selectCards);
   const isAdmin = 1;
@@ -16,9 +21,10 @@ const Cards = () => {
   }, [dispatch]);
 
   return (
-    <div id="all-cards">
+    <div >
+      <CreateProduct />
       {isAdmin ? (
-        <div id="card-container">
+        <div id="all-cards">
           {cards.map((card) => {
             return (
               <Link

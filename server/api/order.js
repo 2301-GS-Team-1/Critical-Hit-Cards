@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Product = require("../db/models/Product");
 const Order = require("../db/models/Order");
+const { requireToken } = require('./gatekeepingMiddleware');
 
 router.get("/", async (req, res, next) => {
   try {
@@ -53,7 +54,7 @@ router.delete("/:id", async (req, res, next) => {
 // });
 
 //create a put route to update order/unfulfilled with the product id
-router.put("/:id", async (req, res, next) => {
+router.put("/:id", requireToken, async (req, res, next) => {
   try {
     const { productId } = req.body;
     const userId = req.user;

@@ -9,6 +9,11 @@ const SingleCart = () => {
   const cart = useSelector(selectSingleCart);
   const { orderId, productId } = cart;
 
+  // const addToCart = () => {
+
+  // }
+
+
   useEffect(() => {
     dispatch(fetchSingleCart(id));
   }, [dispatch]);

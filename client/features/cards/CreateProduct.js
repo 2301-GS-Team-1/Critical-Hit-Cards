@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import addCardAsync from "./slices/singleCardSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
 const CreateProduct = () => {
  const [name, setName] = useState("");
  const [price, setPrice] = useState("");
@@ -40,7 +41,7 @@ const CreateProduct = () => {
  <input
  name="imageUrl"
  value={imageUrl}
- onChange={(e) => setQuantity(e.target.value)}
+ onChange={(e) => setImageUrl(e.target.value)}
  />
  <button type="submit">Submit</button>
  <Link to="/">Cancel</Link>
