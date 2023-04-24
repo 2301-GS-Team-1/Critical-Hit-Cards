@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Product = require("../db/models/Product");
-const Cart = require("../db/models/Cart");
+
 const Order = require("../db/models/Order");
 
 router.get("/", async (req, res, next) => {
@@ -53,15 +53,20 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 
-module.exports = router;
+//create a put route to update order/unfulfilled with the product id
+router.put("/:id", async (req, res, next) => {
+  try {
+    const { productId } = req.body;
+    const userId = req.user;
+    const order = await Order.findOne({
+      where: { userId: userId, fulfilled: false },
+    });
 
-//   where: { id: orderId },
-//   include: [
-//     { model: User, attributes: ["name", "email"] },
-//     {
-//       model: Cart,
-//       include: [{ model: Product, attributes: ["name", "price"] }],
-//     },
-//   ],
-// });
-// res.send(order);
+    await order.update({ productId });
+    res.send(order);
+  } catch (err) {
+    next(err);
+  }
+});
+
+module.exports = router;
