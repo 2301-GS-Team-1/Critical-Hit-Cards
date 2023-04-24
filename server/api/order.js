@@ -42,10 +42,25 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+// router.put("/:id", async (req, res, next) => {
+//   try {
+//     const order = await Order.findByPk(req.params.id);
+//     await order.update(req.body);
+//     res.send(order);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+//create a put route to update order/unfulfilled with the product id
 router.put("/:id", async (req, res, next) => {
   try {
-    const order = await Order.findByPk(req.params.id);
-    await order.update(req.body);
+    const { productId } = req.body;
+    const userId = req.user;
+    const order = await Order.findOne({
+      where: { userId: userId, fulfilled: false },
+    });
+    await order.update({ productId });
     res.send(order);
   } catch (err) {
     next(err);
@@ -53,5 +68,3 @@ router.put("/:id", async (req, res, next) => {
 });
 
 module.exports = router;
-
-
