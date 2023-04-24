@@ -43,6 +43,9 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+
+// o: you can leave this as is and create another route for updating the cart
+//  which is just an unfullfiled order
 router.put("/:id", async (req, res, next) => {
   try {
     const order = await Order.findByPk(req.params.id);
@@ -54,6 +57,8 @@ router.put("/:id", async (req, res, next) => {
 });
 
 module.exports = router;
+
+// o: make sure to remove this
 
 //   where: { id: orderId },
 //   include: [

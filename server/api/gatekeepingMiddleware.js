@@ -1,3 +1,4 @@
+// o: good work on adding this module
 const {
   models: { User },
 } = require("../db");

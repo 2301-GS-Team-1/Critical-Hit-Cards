@@ -2,6 +2,8 @@ const router = require("express").Router();
 const Cart = require("../db/models/Cart");
 const Product = require("../db/models/Product");
 
+// o: the cart and orders are effectively representing the same thing... not sure
+//  why this exists per se?
 router.get("/", async (req, res, next) => {
   try {
     const cart = await Cart.findAll();

@@ -16,6 +16,7 @@ const Product = db.define("product", {
     type: Sequelize.STRING,
   },
   price: {
+    // o: is there any particular reason you are storing this as an integer? (Sequelize.DECIMAL(2))
     type: Sequelize.INTEGER,
   },
   quantity: {

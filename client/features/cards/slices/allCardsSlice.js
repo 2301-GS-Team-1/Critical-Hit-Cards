@@ -11,6 +11,9 @@ export const fetchCards = createAsyncThunk("cards/fetchCards", async () => {
     console.log(error);
   }
 });
+
+// o: please delete things not being used or get rid of this before last commit
+
 // export const addCardAsync = createAsyncThunk(
 //   "card/addCard",
 //   async ({ name, address }) => {

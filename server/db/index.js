@@ -15,6 +15,8 @@ Cart.hasMany(Product);
 Order.hasOne(Cart);
 Order.hasMany(Product);
 
+// o: you are missing a join table here
+
 module.exports = {
   db,
   models: {

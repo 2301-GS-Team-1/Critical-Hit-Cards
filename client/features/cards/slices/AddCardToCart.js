@@ -1,3 +1,4 @@
+// o: this is not a slice... this should not be in the slices folder
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
