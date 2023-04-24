@@ -15,17 +15,19 @@ const Cards = () => {
     <div id="all-cards">
       {cards.map((card) => {
         return (
+          <div>
           <Link key={card.id} id="card-container" to={`/products/${card.id}`}>
-            <div>
               <img id="all-cards-image" src={card.images.small} />
+              </Link>
               <div id="card-info">
                 <h3>{card.name}</h3>
                 <p>{card.information}</p>
                 <p>${card.price}</p>
                 <p>In Stock: {card.quantity}</p>
+                <button>Add to Cart</button>
               </div>
             </div>
-          </Link>
+
         );
       })}
     </div>

@@ -5,7 +5,7 @@ const app = express();
 module.exports = app;
 //if not in production environment want to access secret file.
 //production env will have a place to securely store secret information
-if (process.env.NODE_ENV !== "production") require("../secrets");
+// if (process.env.NODE_ENV !== "production") require("../secrets");
 
 const WHATEVERNAMED_API_KEY = process.env.WHATEVERNAMED_API_key;
 // logging middleware

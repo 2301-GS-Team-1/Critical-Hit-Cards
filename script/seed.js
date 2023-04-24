@@ -6,7 +6,6 @@ const {
 } = require("../server/db");
 const Order = require("../server/db/models/Order");
 const Product = require("../server/db/models/Product");
-const Cart = require("../server/db/models/Cart");
 
 /**
  * seed - this function clears the database, updates tables to
@@ -20,7 +19,6 @@ const seed = async () => {
   await Promise.all(Users.map((user) => User.create(user)));
   await Promise.all(pokemonCards.map((card) => Product.create(card)));
   await Promise.all(Orders.map((order) => Order.create(order)));
-  await Promise.all(Carts.map((cart) => Cart.create(cart)));
 
   // Creating Users
   // const users = await Promise.all([
@@ -3855,13 +3853,6 @@ const Orders = [
   {
     userId: 1,
     fulfilled: false,
-  },
-];
-
-const Carts = [
-  {
-    orderId: 1,
-    productId: 1,
   },
 ];
 
