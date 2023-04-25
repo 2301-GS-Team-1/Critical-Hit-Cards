@@ -12,24 +12,7 @@ export const fetchSingleCard = createAsyncThunk("singleCard", async (id) => {
     console.log(err);
   }
 });
-// export const deleteCampusAsync = createAsyncThunk(
-//   "campus/deleteCampus",
-//   async (id) => {
-//    await axios.delete(
-//       `http://localhost:3000/api/campuses/${id}`
-//     );
-//     return id;
-//   }
-// );
-// export const editCampusAsync = createAsyncThunk(
-//   "campus/editCampus",
-//   async ({id, name, address, description}) => {
-//     const { data } = await axios.put(`http://localhost:3000/api/campuses/${id}`, {
-//       name, address, description
-//     });
-//     return data;
-//   }
-// );
+
 export const singleCardSlice = createSlice({
   name: "singleCard",
   initialState,
