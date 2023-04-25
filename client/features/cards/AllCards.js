@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCards, selectCards } from "./slices/allCardsSlice";
@@ -6,13 +6,34 @@ import CreateProduct from "./CreateProduct";
 
 const Cards = () => {
   const dispatch = useDispatch();
+  const TOKEN = window.localStorage.getItem("token");
 
-  localStorage.setItem('key', 'value');
-  const data = localStorage.getItem('key');
-  localStorage.removeItem('key');
+  //adds product id to the guests cart
+  const handleAdd = (cardId) => {
+    if (!TOKEN) {
+      console.log(cardId);
+      //creates new array or grabs cartitems array
+      const cartItemsString = localStorage.getItem("cartItems");
+      let cartItems = [];
+      if (cartItemsString) {
+        try {
+          cartItems = JSON.parse(cartItemsString);
+        } catch (error) {
+          console.error("Error parsing cart items", error);
+        }
+      }
+
+      cartItems.push(cardId);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+  };
+
+  // localStorage.setItem('key', 'value');
+  // const data = localStorage.getItem('key');
+  // localStorage.removeItem('key');
 
   const cards = useSelector(selectCards);
-  const isAdmin = 1;
+  const isAdmin = 0;
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
 
@@ -21,7 +42,7 @@ const Cards = () => {
   }, [dispatch]);
 
   return (
-    <div >
+    <div>
       <CreateProduct />
       {isAdmin ? (
         <div id="all-cards">
@@ -77,6 +98,7 @@ const Cards = () => {
                     <p>{card.information}</p>
                     <p>${card.price}</p>
                     <p>In Stock: {card.quantity}</p>
+                    <button onClick={() => handleAdd(card)}>Add to cart</button>
                   </div>
                 </div>
               </Link>

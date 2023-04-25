@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Product = require("../db/models/Product");
 const Order = require("../db/models/Order");
-const { requireToken } = require('./gatekeepingMiddleware');
+const { requireToken } = require("./gatekeepingMiddleware");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -58,6 +58,7 @@ router.put("/:id", requireToken, async (req, res, next) => {
   try {
     const { productId } = req.body;
     const userId = req.user;
+    console.log(productId, userId);
     const order = await Order.findOne({
       where: { userId: userId, fulfilled: false },
     });
