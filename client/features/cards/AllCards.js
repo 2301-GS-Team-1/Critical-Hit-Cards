@@ -27,6 +27,26 @@ const Cards = () => {
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
     }
   };
+  // same process as add, just with remove functionality
+
+  const handleDelete = (cardId) => {
+    if (!TOKEN) {
+      console.log(cardId);
+      //creates new array or grabs cartitems array
+      const cartItemsString = localStorage.getItem("cartItems");
+      let cartItems = [];
+      if (cartItemsString) {
+        try {
+          cartItems = JSON.parse(cartItemsString);
+        } catch (error) {
+          console.error("Error parsing cart items", error);
+        }
+      }
+
+      cartItems.push(cardId);
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+  };
 
   // localStorage.setItem('key', 'value');
   // const data = localStorage.getItem('key');

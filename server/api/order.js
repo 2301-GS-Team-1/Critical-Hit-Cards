@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const Product = require("../db/models/Product");
 const Order = require("../db/models/Order");
+const UserCart = require("../../client/features/cart/UserCart")
 const { requireToken } = require("./gatekeepingMiddleware");
+
 
 router.get("/", async (req, res, next) => {
   try {
@@ -54,16 +56,61 @@ router.delete("/:id", async (req, res, next) => {
 // });
 
 //create a put route to update order/unfulfilled with the product id
+// router.put("/:id", requireToken, async (req, res, next) => {
+//   try {
+//     const { productId } = req.body;
+//     const userId = req.user;
+//     console.log(productId, userId);
+//     const order = await Order.findOne({
+//       where: { userId: userId, fulfilled: false },
+//     });
+//     await order.update({ productId });
+//     res.send(order);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 router.put("/:id", requireToken, async (req, res, next) => {
   try {
-    const { productId } = req.body;
-    const userId = req.user;
-    console.log(productId, userId);
-    const order = await Order.findOne({
-      where: { userId: userId, fulfilled: false },
+    const { userId, productId } = req.body;
+    // find cart associated with user
+    const [order, created] = await Order.findOrCreate({
+      where: {
+        userId: userId,
+        fulfilled: false,
+      },
     });
-    await order.update({ productId });
-    res.send(order);
+    // // see if cartItem for that user/cart already exists
+    // let cart = await Cart.findOne({
+    //   where: {
+    //     orderId: order.id,
+    //     productId: productId,
+    //   },
+    // });
+    // // check to increase or decrease quantity
+    // if (plusOrMinus > 0) {
+    //   cart.quantity += 1;
+    //   await cart.save();
+    // } else if (plusOrMinus < 0 && cart.quantity >= 2) {
+    //   cart.quantity -= 1;
+    //   await cart.save();
+    // }
+    // refetch updated cart
+    const newCart = await Order.findOne({
+      where: {
+        userId: userId,
+      },
+      include: {
+        model: Cart,
+        attributes: ["id", "quantity", "productId"],
+        include: {
+          model: Product,
+          attributes: ["name", "price", "imageUrl"],
+        },
+      },
+    });
+    res.send(newCart);
   } catch (err) {
     next(err);
   }

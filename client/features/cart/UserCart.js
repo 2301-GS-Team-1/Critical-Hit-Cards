@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { fetchSingleCart, selectSingleCart } from "./slices/singleCartSlice";
+import { fetchUserCart, selectUserCart } from "./slices/singleCartSlice";
 
-const SingleCart = () => {
+const UserCart = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const cart = useSelector(selectSingleCart);
+  const cart = useSelector(selectUserCart);
   const { orderId, productId } = cart;
 
   // const addToCart = () => {
@@ -15,7 +15,7 @@ const SingleCart = () => {
 
 
   useEffect(() => {
-    dispatch(fetchSingleCart(id));
+    dispatch(fetchUserCart(id));
   }, [dispatch]);
 
 
@@ -28,8 +28,8 @@ const SingleCart = () => {
 // };
 
 return (
-  <div id="single-cart">
-    <div id="single-cart-info">
+  <div id="user-cart">
+    <div id="user-cart-info">
       <p>Order: {orderId}</p>
       <p>Product: {productId}</p>
     </div>
@@ -37,4 +37,4 @@ return (
 );
 };
 
-export default SingleCart
+export default UserCart
