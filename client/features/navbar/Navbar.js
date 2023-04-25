@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../app/store";
-
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
@@ -11,7 +10,6 @@ const Navbar = () => {
     dispatch(logout());
     navigate("/login");
   };
-
   return (
     <div>
       <h1>Critical Hit Cards</h1>
@@ -21,6 +19,7 @@ const Navbar = () => {
             {/* The navbar will show these links after you log in */}
             <Link to="/home">Home</Link>
             <Link to="/products">All Products</Link>
+            <Link to="/order">Cart</Link>
             <button type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
@@ -39,5 +38,4 @@ const Navbar = () => {
     </div>
   );
 };
-
 export default Navbar;

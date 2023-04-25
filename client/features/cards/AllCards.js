@@ -90,18 +90,20 @@ const Cards = () => {
         <div id="all-cards">
           {cards.map((card) => {
             return (
-              <Link id="card-container" to={`/products/${card.id}`}>
-                <div key={card.id}>
-                  <img id="all-cards-image" src={card.images.small} />
-                  <div id="card-info">
-                    <h3>{card.name}</h3>
-                    <p>{card.information}</p>
-                    <p>${card.price}</p>
-                    <p>In Stock: {card.quantity}</p>
-                    <button onClick={() => handleAdd(card)}>Add to cart</button>
+              <div id="card-container">
+                <Link to={`/products/${card.id}`}>
+                  <div id="card-info" key={card.id}>
+                    <img id="all-cards-image" src={card.images.small} />
+                    <div>
+                      <h3>{card.name}</h3>
+                      <p>{card.information}</p>
+                      <p>${card.price}</p>
+                      <p>In Stock: {card.quantity}</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+                <button onClick={() => handleAdd(card)}>Add to cart</button>
+              </div>
             );
           })}
         </div>
