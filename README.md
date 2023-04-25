@@ -1,44 +1,24 @@
 # Critical Hit Cards
 
-## Setup
+Welcome to Critical Hit Cards! We specialize in selling a wide variety of Pokemon trading cards at competitive prices. Our store is built with e-commerce functionality to provide a seamless shopping experience for our customers.
 
-To use this as boilerplate, you'll need to take the following steps:
+# Features
+Our website features the following:
 
-- Don't fork or clone this repo! Instead, create a new, empty
-  directory on your machine and `git init` (or create an empty repo on
-  Github and clone it to your local machine)
+- Browse and search for Pokemon trading cards
+- Add cards to your cart and checkout
+- View your order history and track your shipments
+- Contact us for support or inquiries
 
-- Now you will have to add the fs-app-template as a remote and merge it into your own repository.
+# Technologies
+Our website is built using the following technologies:
 
-```
-git remote add boilermaker git@github.com:FullstackAcademy/fs-app-template-v2.git
-git fetch boilermaker
-git merge boilermaker/main
-git branch -m master main
-```
+- React.js for front-end development
+- Node.js and Express for back-end development
+- PostgreSQL for data storage
 
-## Customize
+# Getting Started
+To get started with our website, simply visit our website. You can browse our selection of cards and add items to your cart.
 
-Now that you've got the code, follow these steps to get acclimated:
-
-- Update project name and description in `package.json`
-- `npm install`
-- Create two postgres databases (`MY_APP_NAME` should match the `name`
-  parameter in `package.json`):
-- These commands will create both your **development** and **test** databases
-
-```
-createdb <YOUR APP NAME HERE FROM package.json>
-createdb <YOUR APP NAME HERE FROM package.json>-test
-```
-
-- By default, running `npm test` will use your test database, while
-  regular development uses development database
-
-## Start
-
-Sync and seed your database by running `npm run seed`. Running `npm run start:dev` will make great things happen!
-
-- start:dev will both start your server and build your client side files using webpack
-- start:dev:logger is the same as start:dev, but you will see your SQL queries (can be helpful for debugging)
-- start:dev:seed will start your server and also seed your database (this is useful when you are making schema changes and you don't want to run your seed script separately)
+# Support
+If you have any questions or issues with our website, please don't hesitate to contact us. We're here to help!
