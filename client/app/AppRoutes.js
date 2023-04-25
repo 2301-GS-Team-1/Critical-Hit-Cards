@@ -6,7 +6,7 @@ import Cards from "../features/cards/AllCards";
 import SingleCard from "../features/cards/SingleCard";
 import Home from "../features/home/Home";
 import { me } from "./store";
-
+import GuestCart from "../features/cart/GuestCart";
 /**
  * COMPONENT
  */
@@ -45,6 +45,7 @@ const AppRoutes = () => {
             path="/signup"
             element={<AuthForm name="signup" displayName="Sign Up" />}
           />
+          <Route path="/order" element={<GuestCart />} />
         </Routes>
       )}
     </div>

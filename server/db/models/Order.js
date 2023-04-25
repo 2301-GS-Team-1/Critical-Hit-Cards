@@ -10,6 +10,9 @@ const Order = db.define("order", {
   fulfilled: {
     type: Sequelize.BOOLEAN,
   },
+  productId: {
+    type: Sequelize.INTEGER,
+  },
 });
 
 module.exports = Order;

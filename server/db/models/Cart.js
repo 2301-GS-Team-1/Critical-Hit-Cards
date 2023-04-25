@@ -1,16 +1,18 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
+const Product = require("./Product.");
 
 const Cart = db.define("cart", {
-  orderId: {
+  quantity: {
     type: Sequelize.INTEGER,
-    unique: true,
-    allowNull: false,
   },
-  productId: {
+  ProductId: {
     type: Sequelize.INTEGER,
-    unique: true,
     allowNull: false,
+    references: {
+      model: Product,
+      key: "id",
+    },
   },
 });
 

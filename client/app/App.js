@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import Navbar from '../features/navbar/Navbar';
-import AppRoutes from './AppRoutes';
+import Navbar from "../features/navbar/Navbar";
+import AppRoutes from "./AppRoutes";
 
 const App = () => {
   return (
@@ -13,5 +13,3 @@ const App = () => {
 };
 
 export default App;
-
-

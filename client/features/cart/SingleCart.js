@@ -9,27 +9,30 @@ const SingleCart = () => {
   const cart = useSelector(selectSingleCart);
   const { orderId, productId } = cart;
 
+  // const addToCart = () => {
+
+  // }
+
   useEffect(() => {
     dispatch(fetchSingleCart(id));
   }, [dispatch]);
 
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await dispatch(deleteCard(id));
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // };
 
-// const handleDelete = async (id) => {
-//   try {
-//     await dispatch(deleteCard(id));
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-return (
-  <div id="single-cart">
-    <div id="single-cart-info">
-      <p>Order: {orderId}</p>
-      <p>Product: {productId}</p>
+  return (
+    <div id="single-cart">
+      <div id="single-cart-info">
+        <p>Order: {orderId}</p>
+        <p>Product: {productId}</p>
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
-export default SingleCart
+export default SingleCart;

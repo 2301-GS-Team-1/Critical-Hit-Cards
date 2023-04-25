@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Product = require("../db/models/Product");
-const Cart = require("../db/models/Cart");
 const Order = require("../db/models/Order");
+const { requireToken } = require("./gatekeepingMiddleware");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -16,7 +16,7 @@ router.get("/:id", async (req, res, next) => {
   try {
     // const orderId = req.params.id;
 
-    const order = await Order.findByPk(req.params.id, { include: [Cart] });
+    const order = await Order.findByPk(req.params.id);
     res.send(order);
   } catch (err) {
     next(err);
@@ -43,10 +43,25 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/:id", async (req, res, next) => {
+// router.put("/:id", async (req, res, next) => {
+//   try {
+//     const order = await Order.findByPk(req.params.id);
+//     await order.update(req.body);
+//     res.send(order);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+//create a put route to update order/unfulfilled with the product id
+router.put("/:id", requireToken, async (req, res, next) => {
   try {
-    const order = await Order.findByPk(req.params.id);
-    await order.update(req.body);
+    const { productId } = req.body;
+    const userId = req.user;
+    const order = await Order.findOne({
+      where: { userId: userId, fulfilled: false },
+    });
+    await order.update({ productId });
     res.send(order);
   } catch (err) {
     next(err);
@@ -54,14 +69,3 @@ router.put("/:id", async (req, res, next) => {
 });
 
 module.exports = router;
-
-//   where: { id: orderId },
-//   include: [
-//     { model: User, attributes: ["name", "email"] },
-//     {
-//       model: Cart,
-//       include: [{ model: Product, attributes: ["name", "price"] }],
-//     },
-//   ],
-// });
-// res.send(order);
