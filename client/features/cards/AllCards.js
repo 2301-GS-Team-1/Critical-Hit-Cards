@@ -90,9 +90,9 @@ const Cards = () => {
         <div id="all-cards">
           {cards.map((card) => {
             return (
-              <div id="card-container">
+              <div id="card-container" key={card.id}>
                 <Link to={`/products/${card.id}`}>
-                  <div id="card-info" key={card.id}>
+                  <div id="card-info">
                     <img id="all-cards-image" src={card.images.small} />
                     <div>
                       <h3>{card.name}</h3>
