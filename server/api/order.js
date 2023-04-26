@@ -73,22 +73,6 @@ router.post("/:id", requireToken, async (req, res, next) => {
         fulfilled: false,
       },
     });
-    // // see if cartItem for that user/cart already exists
-    // let cart = await Cart.findOne({
-    //   where: {
-    //     orderId: order.id,
-    //     productId: productId,
-    //   },
-    // });
-    // // check to increase or decrease quantity
-    // if (plusOrMinus > 0) {
-    //   cart.quantity += 1;
-    //   await cart.save();
-    // } else if (plusOrMinus < 0 && cart.quantity >= 2) {
-    //   cart.quantity -= 1;
-    //   await cart.save();
-    // }
-    // refetch updated cart
     const newCart = await Order.findOne({
       where: {
         userId: userId,
