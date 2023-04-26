@@ -6,7 +6,9 @@ import Cards from "../features/cards/AllCards";
 import SingleCard from "../features/cards/SingleCard";
 import Home from "../features/home/Home";
 import { me } from "./store";
-
+import GuestCart from "../features/cart/GuestCart";
+import Checkout from "../features/cards/Checkout";
+import UserCart from "../features/cart/UserCart";
 /**
  * COMPONENT
  */
@@ -27,6 +29,8 @@ const AppRoutes = () => {
           <Route to="/home" element={<Home />} />
           <Route path="/products" element={<Cards />} />
           <Route path="/products/:id" element={<SingleCard />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order" element={<UserCart />} />
         </Routes>
       ) : (
         <Routes>
@@ -45,6 +49,8 @@ const AppRoutes = () => {
             path="/signup"
             element={<AuthForm name="signup" displayName="Sign Up" />}
           />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order" element={<GuestCart />} />
         </Routes>
       )}
     </div>

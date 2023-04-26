@@ -11,25 +11,7 @@ export const fetchCards = createAsyncThunk("cards/fetchCards", async () => {
     console.log(error);
   }
 });
-// export const addCardAsync = createAsyncThunk(
-//   "card/addCard",
-//   async ({ name, address }) => {
-//     const { data } = await axios.post("http://localhost:3000/api/cards", {
-//       name,
-//       address,
-//     });
-//     return data;
-//   }
-// );
-// export const deleteStudentAsync = createAsyncThunk(
-//   "student/deleteStudent",
-//   async (id) => {
-//     await axios.delete(
-//       `http://localhost:3000/api/students/${id}`
-//     );
-//     return id;
-//   }
-// );
+
 export const cardSlice = createSlice({
   name: "cards",
   initialState: [],

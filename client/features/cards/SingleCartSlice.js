@@ -1,20 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import React from "react";
-
 const initialState = {};
-
-export const fetchSingleCart = createAsyncThunk("singCart", async (id) => {
+export const fetchUserCart = createAsyncThunk("userCart", async (id) => {
   try {
-    const { data } = await axios.get(`/api/cart/${id}`);
+    const { data } = await axios.get(`/api/order/${id}`);
     return data;
   } catch (err) {
     console.log(err);
   }
 });
 
-export const singleCartSlice = createSlice({
-  name: "singleCart",
+export const userCartSlice = createSlice({
+  name: "userCart",
   initialState,
   reducers: {
     addCardToCart: (state, action) => {
@@ -34,17 +31,15 @@ export const singleCartSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchSingleCart.fulfilled, (state, action) => {
+    builder.addCase(fetchUserCart.fulfilled, (state, action) => {
       state = action.payload;
       return state;
     });
   },
 });
-export const selectSingleCart = (state) => {
-  return state.singleCart;
+export const selectUserCart = (state) => {
+  return state.userCart;
 };
-
-export const { addCardToCart, removeCardFromCart, clearCardFromCart } =
-  SingleCartSlice.actions;
-
-export default singleCart.reducer;
+// export const { addCardToCart, removeCardFromCart, clearCardFromCart } =
+//  SingleCartSlice.actions;
+export default userCartSlice.reducer;
